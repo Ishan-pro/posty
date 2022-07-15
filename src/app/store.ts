@@ -1,12 +1,13 @@
+import { userApi } from './../features/user.api';
 import {configureStore} from '@reduxjs/toolkit'
-import CounterReducer from '../features/counterslice'
-import { photoApi } from '../features/photos';
+import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 
 export const store = configureStore({
     reducer:{
-        counter:CounterReducer,
-        [photoApi.reducerPath]:photoApi.reducer
+        [userApi.reducerPath]:userApi.reducer,
     },
+    middleware:(curryGetDefaultMiddleware) =>
+        curryGetDefaultMiddleware().concat(userApi.middleware)
 })
 
 export type AppDispatch = typeof store.dispatch;

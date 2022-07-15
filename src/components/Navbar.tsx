@@ -8,23 +8,43 @@ export default function Navbar() {
   return (
     <Nav>
         <Navhead>Posty</Navhead>
+        <MenuItems>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Dashboard</a></li>
+        </MenuItems>
         <MenuButton>{MenuIcon}</MenuButton>
     </Nav>
   )
 }
 
+const MenuItems = tw.ul`
+    hidden
+    lg:grid
+    lg:col-span-5
+    lg:justify-end
+    lg:list
+    lg:grid-flow-col
+    lg:gap-4
+`
+
 const Navhead = tw.h1`
     text-xl
-    flex-1
+    col-span-9
+    lg:col-span-5
 `
 
 const MenuButton = tw.button`
-    
+    ripple-bg-transparent
+    rounded
+    lg:hidden
 `
 
 const Nav = tw.nav`
     bg-teal-700
     text-white
     p-4
-    flex
+    grid
+    grid-cols-10
 `

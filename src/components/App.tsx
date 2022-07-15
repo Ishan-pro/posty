@@ -2,28 +2,31 @@
 import React, { ChangeEventHandler, SyntheticEvent, useState } from 'react'
 
 import {useAppDispatch, useAppSelector} from '../app/hooks'
-import { useGetPhotobyIdQuery } from '../features/photos'
 import tw from 'tailwind-styled-components'
 import Navbar from './Navbar'
+import Chatbox from './Chatbox'
 
 function App() {
   const dispatch = useAppDispatch()
   const [text, setText] = useState<string>(' ')
-  useGetPhotobyIdQuery(text)
 
   const handlePostChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value)
   }
   return (
        <>
-         <Navbar/>
+         <Container style={{height:"100vh"}}>
+          <Navbar/>
+          <Chatbox/>
+         </Container>
        </>
        
   )
 }
 
-const Hello = tw.div`
-  bg-slate-700
+const Container = tw.div`
+  flex
+  flex-col
 `
 
 export default App
